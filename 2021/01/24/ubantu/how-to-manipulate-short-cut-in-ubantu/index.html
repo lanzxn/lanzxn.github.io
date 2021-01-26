@@ -6,15 +6,15 @@
   
   <title>how-to-manipulate-short-cut-in-ubantu | lanzxn&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="how to create short cut in ubantufirst, notice this path : ~&#x2F;.local&#x2F;share&#x2F;applications which store short cuts.in that path, you can see some short cut file that end with .desktop.desktop is the file s">
+  <meta name="description" content="how to create short cut in ubantufirst, notice this path ~&#x2F;.local&#x2F;share&#x2F;applications where stores short cuts.in that path, you can see some short cut file that end with .desktop..desktop is the file s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="how-to-manipulate-short-cut-in-ubantu">
 <meta property="og:url" content="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/index.html">
 <meta property="og:site_name" content="lanzxn&#39;s blog">
-<meta property="og:description" content="how to create short cut in ubantufirst, notice this path : ~&#x2F;.local&#x2F;share&#x2F;applications which store short cuts.in that path, you can see some short cut file that end with .desktop.desktop is the file s">
+<meta property="og:description" content="how to create short cut in ubantufirst, notice this path ~&#x2F;.local&#x2F;share&#x2F;applications where stores short cuts.in that path, you can see some short cut file that end with .desktop..desktop is the file s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-01-24T13:25:49.000Z">
-<meta property="article:modified_time" content="2021-01-24T13:25:56.957Z">
+<meta property="article:modified_time" content="2021-01-26T03:18:33.669Z">
 <meta property="article:author" content="lanzxn">
 <meta property="article:tag" content="ubantu">
 <meta name="twitter:card" content="summary">
@@ -96,17 +96,17 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="how-to-create-short-cut-in-ubantu"><a href="#how-to-create-short-cut-in-ubantu" class="headerlink" title="how to create short cut in ubantu"></a>how to create short cut in ubantu</h1><p>first, notice this path : <code>~/.local/share/applications</code> which store short cuts.<br>in that path, you can see some short cut file that end with <code>.desktop</code><br><code>.desktop</code> is the file suffix special for ubantu short cut.</p>
+        <h1 id="how-to-create-short-cut-in-ubantu"><a href="#how-to-create-short-cut-in-ubantu" class="headerlink" title="how to create short cut in ubantu"></a>how to create short cut in ubantu</h1><p>first, notice this path <code>~/.local/share/applications</code> where stores short cuts.<br>in that path, you can see some short cut file that end with <code>.desktop</code>.<br><code>.desktop</code> is the file suffix special for ubantu short cut.</p>
 <p>Let’s analyse one example:</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=IntelliJ IDEA Ultimate Edition</span><br><span class="line">Icon=/opt/idea/bin/idea.svg</span><br><span class="line">Exec=<span class="string">&quot;/opt/idea/bin/idea.sh&quot;</span> %f</span><br><span class="line">Comment=Capable and Ergonomic IDE <span class="keyword">for</span> JVM</span><br><span class="line">Categories=Development;IDE;</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">StartupWMClass=jetbrains-idea</span><br></pre></td></tr></table></figure>
-<p>At the first line, it starts with <code>[Desktop Entry]</code>, which means it is a short cut file.<br>the second line is the version for short cut, it’ value is always <code>1.0</code><br>the third line is the file type, it’s value is always <code>Application</code>, means this file can execute as application<br>You can name it using <code>Name</code> property, using <code>Icon</code> property to define this short cut icon, its value is the path where the icon stored.<br>If you define type is application, you must define exec property, the <code>Exec</code> specifies the execute path where the execute file. In this example, thist short cut execute path is <code>/opt/idea/bin/idea.sh</code>.<br>You can comment short cut using <code>Comment</code> property, also catogory this file using <code>Categories</code> property. In this example, this short cut is in <code>IDE</code>, <code>Development</code>.<br>If you don’t want to see the terminal when you execute this application, you can set false value for <code>Terminal</code><br>The field called <code>StartupWMClass</code> is a string that defines in which class the application is grouped in the Unity Launcher at startup. for this example, it’s start class is called <code>jetbrains-idea</code></p>
+<p>At the first line, it starts with <code>[Desktop Entry]</code>, which means it is a short cut file.<br>the second line is the version for short cut, its value is always <code>1.0</code>.<br>the third line is the file type, its value is always <code>Application</code>, means this file can execute as application.<br>You can name it using <code>Name</code> property, using <code>Icon</code> property to define the short cut icon, its value is the path where the icon stored.<br>If you define type as application, you must define exec property, the <code>Exec</code> specifies the execute path where the execute file is. In this example,the execute path for this short cut is <code>/opt/idea/bin/idea.sh</code>.<br>You can comment short cut using <code>Comment</code> property, also catogory this file using <code>Categories</code> property. In this example, this short cut is in <code>IDE</code>, <code>Development</code>.<br>If you don’t want to see the terminal when you execute this application, you can set false value for <code>Terminal</code> property.<br>The field called <code>StartupWMClass</code> is a string that defines in which class the application is grouped in the Unity Launcher at startup. for this example, its start class is called <code>jetbrains-idea</code></p>
 <p>After we analyse this kind of file, now you can create a file ends with <code>desktop</code> in <code>~/.local/share/applications</code> for yourself.</p>
 <h1 id="how-to-remove-short-cut-in-ubantu"><a href="#how-to-remove-short-cut-in-ubantu" class="headerlink" title="how to remove short cut in ubantu"></a>how to remove short cut in ubantu</h1><p>Now we know all the short cut files store in <code>~/.local/share/applications</code>, if you want to remove a short cut, you just delete correspond file which in <code>~/.local/share/applications</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckkb6hi390002y0jx6czrfopf" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckkdfpw3c00020jjx463kgolh" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
       
       
       
