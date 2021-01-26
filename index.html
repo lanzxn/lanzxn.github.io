@@ -71,6 +71,63 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ubantu/how-to-install-jdk-in-ubantu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" class="article-date">
+  <time class="dt-published" datetime="2021-01-26T13:19:52.000Z" itemprop="datePublished">2021-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/">how-to-install-jdk-in-ubantu</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Install-jdk-using-apt-get"><a href="#Install-jdk-using-apt-get" class="headerlink" title="Install jdk using apt-get"></a>Install jdk using apt-get</h1><ol>
+<li>Check which version of the JDK your system is using: <code>java -version</code></li>
+<li>Update the repositories: <code>sudo apt-get update</code></li>
+<li>Install OpenJDK: <code>sudp apt-get install openjdk-8-jdk</code></li>
+<li>Verify the version of the JDK: <code>java -version</code></li>
+</ol>
+<h1 id="Install-jdk-manually"><a href="#Install-jdk-manually" class="headerlink" title="Install jdk manually"></a>Install jdk manually</h1><ol>
+<li>Go to the oracle website download the JDK: <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle Java</a></li>
+<li>create a category like <code>/usr/lib/jdk8</code>, unzip to where just created: <code>sudo tar -zxvf xxx.tar.gz -C /usr/lib/jdk8</code></li>
+<li>edit the personal environment file : <code>sudo vi ~/.bashrc</code></li>
+<li>append the fallowing content at the end of file:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_191  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span>  </span><br></pre></td></tr></table></figure></li>
+<li>active the environment file: <code>source ~/.bashrc</code></li>
+<li>register the version to system: <code>sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_191/bin/java 300</code> [<code>update-alternatives --install &lt;link&gt; &lt;name&gt; &lt;path&gt; &lt;priority&gt;</code>]</li>
+<li>verify the version of the JDK: <code>java -version</code></li>
+</ol>
+<p>By the way, if you install other verions of JDK, you can input this command to choose the exact version: <code>sudo update-alternatives –config java</code></p>
+<p>After installing the JDK, you may need to set JAVA_HOME to your profile:<br><code>export JAVA_HOME=path_to_java_home</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lanzxn.github.io/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" data-id="ckke1235x000264jxa23xho5f" data-title="how-to-install-jdk-in-ubantu" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubantu/" rel="tag">ubantu</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
     <article id="post-ubantu/how-to-manipulate-short-cut-in-ubantu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" class="article-date">
@@ -99,11 +156,15 @@
 <p>At the first line, it starts with <code>[Desktop Entry]</code>, which means it is a short cut file.<br>the second line is the version for short cut, its value is always <code>1.0</code>.<br>the third line is the file type, its value is always <code>Application</code>, means this file can execute as application.<br>You can name it using <code>Name</code> property, using <code>Icon</code> property to define the short cut icon, its value is the path where the icon stored.<br>If you define type as application, you must define exec property, the <code>Exec</code> specifies the execute path where the execute file is. In this example,the execute path for this short cut is <code>/opt/idea/bin/idea.sh</code>.<br>You can comment short cut using <code>Comment</code> property, also catogory this file using <code>Categories</code> property. In this example, this short cut is in <code>IDE</code>, <code>Development</code>.<br>If you don’t want to see the terminal when you execute this application, you can set false value for <code>Terminal</code> property.<br>The field called <code>StartupWMClass</code> is a string that defines in which class the application is grouped in the Unity Launcher at startup. for this example, its start class is called <code>jetbrains-idea</code></p>
 <p>After we analyse this kind of file, now you can create a file ends with <code>desktop</code> in <code>~/.local/share/applications</code> for yourself.</p>
 <h1 id="how-to-remove-short-cut-in-ubantu"><a href="#how-to-remove-short-cut-in-ubantu" class="headerlink" title="how to remove short cut in ubantu"></a>how to remove short cut in ubantu</h1><p>Now we know all the short cut files store in <code>~/.local/share/applications</code>, if you want to remove a short cut, you just delete correspond file which in <code>~/.local/share/applications</code></p>
+<h1 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h1><p>By the way, the path we mention above is the place where personal’s short cut stored.<br>if you want to find common short cut path, you can try this: <code>usr/share/applications</code> </p>
+<h1 id="Ref"><a href="#Ref" class="headerlink" title="Ref"></a>Ref</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://developer.gnome.org/integration-guide/stable/desktop-files.html.en">Desktop files: putting your application in the desktop menus</a></li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckkdfpw3c00020jjx463kgolh" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckke1235y000364jxgcj494v6" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
       
       
       
@@ -152,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/18/hello-world/" data-id="ckkdfpw3900010jjx4n4s20ua" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/18/hello-world/" data-id="ckke1235u000164jx6lkda3qp" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -207,6 +268,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/">how-to-install-jdk-in-ubantu</a>
+          </li>
         
           <li>
             <a href="/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/">how-to-manipulate-short-cut-in-ubantu</a>

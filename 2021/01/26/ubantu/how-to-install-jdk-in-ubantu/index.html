@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>how-to-install-jdk-in-ubantu | lanzxn&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Install jdk using apt-get Check which version of the JDK your system is using: java -version Update the repositories: sudo apt-get update Install OpenJDK: sudp apt-get install openjdk-8-jdk Verify the">
+<meta property="og:type" content="article">
+<meta property="og:title" content="how-to-install-jdk-in-ubantu">
+<meta property="og:url" content="http://lanzxn.github.io/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/index.html">
+<meta property="og:site_name" content="lanzxn&#39;s blog">
+<meta property="og:description" content="Install jdk using apt-get Check which version of the JDK your system is using: java -version Update the repositories: sudo apt-get update Install OpenJDK: sudp apt-get install openjdk-8-jdk Verify the">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-01-26T13:19:52.000Z">
+<meta property="article:modified_time" content="2021-01-26T13:20:04.025Z">
+<meta property="article:author" content="lanzxn">
+<meta property="article:tag" content="ubantu">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="lanzxn's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.3.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">lanzxn&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://lanzxn.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-ubantu/how-to-install-jdk-in-ubantu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" class="article-date">
+  <time class="dt-published" datetime="2021-01-26T13:19:52.000Z" itemprop="datePublished">2021-01-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      how-to-install-jdk-in-ubantu
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="Install-jdk-using-apt-get"><a href="#Install-jdk-using-apt-get" class="headerlink" title="Install jdk using apt-get"></a>Install jdk using apt-get</h1><ol>
+<li>Check which version of the JDK your system is using: <code>java -version</code></li>
+<li>Update the repositories: <code>sudo apt-get update</code></li>
+<li>Install OpenJDK: <code>sudp apt-get install openjdk-8-jdk</code></li>
+<li>Verify the version of the JDK: <code>java -version</code></li>
+</ol>
+<h1 id="Install-jdk-manually"><a href="#Install-jdk-manually" class="headerlink" title="Install jdk manually"></a>Install jdk manually</h1><ol>
+<li>Go to the oracle website download the JDK: <a target="_blank" rel="noopener" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Oracle Java</a></li>
+<li>create a category like <code>/usr/lib/jdk8</code>, unzip to where just created: <code>sudo tar -zxvf xxx.tar.gz -C /usr/lib/jdk8</code></li>
+<li>edit the personal environment file : <code>sudo vi ~/.bashrc</code></li>
+<li>append the fallowing content at the end of file:<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/lib/jvm/jdk1.8.0_191  <span class="comment">## 这里要注意目录要换成自己解压的jdk 目录</span></span><br><span class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span>  </span><br></pre></td></tr></table></figure></li>
+<li>active the environment file: <code>source ~/.bashrc</code></li>
+<li>register the version to system: <code>sudo update-alternatives --install /usr/bin/java java /usr/lib/jvm/jdk1.8.0_191/bin/java 300</code> [<code>update-alternatives --install &lt;link&gt; &lt;name&gt; &lt;path&gt; &lt;priority&gt;</code>]</li>
+<li>verify the version of the JDK: <code>java -version</code></li>
+</ol>
+<p>By the way, if you install other verions of JDK, you can input this command to choose the exact version: <code>sudo update-alternatives –config java</code></p>
+<p>After installing the JDK, you may need to set JAVA_HOME to your profile:<br><code>export JAVA_HOME=path_to_java_home</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://lanzxn.github.io/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" data-id="ckke1235x000264jxa23xho5f" data-title="how-to-install-jdk-in-ubantu" class="article-share-link">Share</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubantu/" rel="tag">ubantu</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">how-to-manipulate-short-cut-in-ubantu</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/ubantu/" rel="tag">ubantu</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/ubantu/" style="font-size: 10px;">ubantu</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/">how-to-install-jdk-in-ubantu</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/">how-to-manipulate-short-cut-in-ubantu</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/18/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 lanzxn<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
