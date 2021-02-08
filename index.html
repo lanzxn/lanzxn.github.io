@@ -71,10 +71,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-tutorial/vim-tutorial" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article id="post-ubantu/how-to-config-environment-variable-in-ubantu" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/02/02/tutorial/vim-tutorial/" class="article-date">
-  <time class="dt-published" datetime="2021-02-02T07:47:26.000Z" itemprop="datePublished">2021-02-02</time>
+    <a href="/2021/02/08/ubantu/how-to-config-environment-variable-in-ubantu/" class="article-date">
+  <time class="dt-published" datetime="2021-02-08T09:38:54.000Z" itemprop="datePublished">2021-02-08</time>
 </a>
     
   </div>
@@ -85,7 +85,7 @@
         
   
     <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/02/tutorial/vim-tutorial/">vim-tutorial</a>
+      <a class="p-name article-title" href="/2021/02/08/ubantu/how-to-config-environment-variable-in-ubantu/">how-to-config-environment-variable-in-ubantu</a>
     </h1>
   
 
@@ -93,236 +93,37 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h1 id="Installation-And-Configuration"><a href="#Installation-And-Configuration" class="headerlink" title="Installation And Configuration"></a>Installation And Configuration</h1><h2 id="Installation-on-Debian-based-Linux"><a href="#Installation-on-Debian-based-Linux" class="headerlink" title="Installation on Debian based Linux"></a>Installation on Debian based Linux</h2><p><em>Installation</em></p>
+        <h1 id="File-introduce"><a href="#File-introduce" class="headerlink" title="File introduce"></a>File introduce</h1><p>ubantu has five path to save environment variables.</p>
 <ol>
-<li>update apt-get software source: <code>sudo apt-get update</code></li>
-<li>Execute command in terminal: <code>sudo apt-get install vim</code></li>
-<li>To ensure Vim is correctly installed execute command, it should show as /usr/bin/vim: <code>which vim</code></li>
+<li><code>/etc/profile</code>: when user first login, ubantu will read this file to set the environment variables for every user.</li>
+<li><code>/etc/environment</code>: the second config file used by system when user login in.</li>
+<li><code>~/.profile</code>: config environment variable just for current user.</li>
+<li><code>/etc/bashrc</code>: config shell information for every user. </li>
+<li><code>~/.bashrc</code>: config shell information just for current user.</li>
 </ol>
-<p><em>Configuration</em></p>
-<ol>
-<li>find current user’s home directory: <code>echo $HOME</code></li>
-<li>Navigate to home directory and create a new file namely .vimrc: <code>touch .vimrc</code></li>
-<li>open the file in text editor, enter text and save it (it will show line numbers when file is opened): <code>set nu</code></li>
+<h1 id="Config-System-environment-variable"><a href="#Config-System-environment-variable" class="headerlink" title="Config System environment variable"></a>Config System environment variable</h1><ol>
+<li>edit system config file: <code>sudo vim /etc/profile</code></li>
+<li>add environment variable to the end of file: <code>export PATH=.:&#123;custom execute path&#125;:$PATH</code></li>
+<li>apply the change: <code>source profile</code></li>
 </ol>
-<h1 id="Getting-familiar"><a href="#Getting-familiar" class="headerlink" title="Getting familiar"></a>Getting familiar</h1><h2 id="Start-Vim"><a href="#Start-Vim" class="headerlink" title="Start Vim"></a>Start Vim</h2><p><em>Use terminal</em></p>
-<p>Open terminal and enter vim command : <code>vim</code></p>
-<p>To close vim, press <code>Esc</code> key followed by colon(:) and <code>q</code>.</p>
-<p>In Vim <code>q</code> command stands for quit</p>
-<h2 id="Vim-modes"><a href="#Vim-modes" class="headerlink" title="Vim modes"></a>Vim modes</h2><p>Vim supports multiple modes.</p>
-<p><em>Command mode</em></p>
-<p>This is the default mode in which Vim starts. We can enter editor commands in this mode.</p>
-<p><strong>NOTE, Any Vim command without colon indicates that we are executing that command in command mode.</strong></p>
-<p><em>Insert mode</em></p>
-<p>You can use this mode to enter/edit text. To switch from default command to insert mode press <code>i</code> key.</p>
-<p>It will show current mode in bottom left corner of editor.</p>
-<p>You also can use <code>Escape</code> key to switch back to command mode.</p>
-<p><em>Command line mode</em></p>
-<p>This mode is also used to enter commands. </p>
-<p>Commands in this mode starts with colon(:). </p>
-<p>For instance, in previous section quit command was entered in this mode. We can go to this mode either from command or insert mode.</p>
-<ul>
-<li>To switch from command mode to this mode just type colon</li>
-<li>To switch from insert mode to this mode press Escape and type colon</li>
-</ul>
-<p><em>Visual mode</em></p>
-<p>In this mode we can visually select text and run commands on selected sections.</p>
-<ul>
-<li>To switch from command mode to visual mode type v</li>
-<li>To switch from any other mode to visual mode first switch back to command mode by pressing Escape, then type v to switch to visual mode</li>
-</ul>
-<h2 id="Create-new-file"><a href="#Create-new-file" class="headerlink" title="Create new file"></a>Create new file</h2><ol>
-<li>Execute command to open Vim: <code>vim</code></li>
-<li>Type command in Vim: <code>:edit message.txt</code></li>
-<li>Switch to insert mode (Enter some text): <code>i</code></li>
-<li>Switch back to command mode: <code>Esc</code></li>
-<li>Save changes to file: <code>:w</code></li>
-<li>Quit Vim: <code>:q</code></li>
+<h1 id="Config-current-shell-environment-variable"><a href="#Config-current-shell-environment-variable" class="headerlink" title="Config current shell environment variable"></a>Config current shell environment variable</h1><ol>
+<li>edit shell config file: <code>vim ~/.bashrc</code></li>
+<li>add environment variable to the end of file: <code>export PATH=.:&#123;custom execute path&#125;:$PATH</code></li>
+<li>reopen shell</li>
 </ol>
-<h2 id="Open-file-in-read-only-mode"><a href="#Open-file-in-read-only-mode" class="headerlink" title="Open file in read-only mode"></a>Open file in read-only mode</h2><p>Use –R option to open file in read-only mode: <code>vim -R message.txt</code></p>
-<h2 id="Edit-existing-file"><a href="#Edit-existing-file" class="headerlink" title="Edit existing file"></a>Edit existing file</h2><ol>
-<li>Open file using vim: <code>vim message.txt</code></li>
-<li>Switch to insert mode and enter some text there: <code>i</code></li>
-<li>Quit editor without saving changes: <code>:q!</code></li>
-<li>Save changes and quit editor using following command: <code>:wq</code></li>
+<h1 id="Config-current-user-environment-variable"><a href="#Config-current-user-environment-variable" class="headerlink" title="Config current user environment variable"></a>Config current user environment variable</h1><ol>
+<li>edit user config file: <code>vim ~/.profile</code></li>
+<li>add environment variable to the end of file: <code>export PATH=.:&#123;custom execute path&#125;:$PATH</code></li>
+<li>apply the change: <code>source $HOME/.profile</code></li>
 </ol>
-<h1 id="Getting-Help"><a href="#Getting-Help" class="headerlink" title="Getting Help"></a>Getting Help</h1><h2 id="Access-help-manual"><a href="#Access-help-manual" class="headerlink" title="Access help manual"></a>Access help manual</h2><p>Help manual is shipped with Vim editor itself and it is really comprehensive. To access help execute command: <code>:help</code> </p>
-<h2 id="Help-on-specific-topic"><a href="#Help-on-specific-topic" class="headerlink" title="Help on specific topic"></a>Help on specific topic</h2><p>Help manual will show entire help about Vim. But what if, we are only interested in certain topic. Vim provides command for that as well with syntax: <code>:help &lt;topic-name&gt;</code></p>
-<h2 id="Search-help-phrase-in-manual"><a href="#Search-help-phrase-in-manual" class="headerlink" title="Search help phrase in manual"></a>Search help phrase in manual</h2><p>You can search specific topic only if you know its name. But what if, you don’t know the exact name of help topic. In that case you can use command: <code>:helpgrep &lt;phrase&gt;</code></p>
-<h1 id="Editing"><a href="#Editing" class="headerlink" title="Editing"></a>Editing</h1><p>Vim provides many commands which make editing functionality really powerful.</p>
-<ul>
-<li>Insert text before cursor: <code>i</code></li>
-<li>Insert text at the beginning of line: <code>I</code></li>
-<li>Append text after cursor: <code>a</code></li>
-<li>Append text at the end of line: <code>A</code></li>
-<li>Open new line below cursor: <code>o</code></li>
-<li>Open new line above cursor: <code>O</code></li>
-<li>Subsititute single character: <code>s</code></li>
-<li>Subsititute current line: <code>S</code> or <code>cc</code> or <code>C</code></li>
-<li>Replace single character: <code>r</code></li>
-<li>Replace entire line: <code>R</code></li>
-</ul>
-<h1 id="Navigating"><a href="#Navigating" class="headerlink" title="Navigating"></a>Navigating</h1><p>Vim has great support for advanced navigation.</p>
-<p><em>Basic navigation</em></p>
-<ul>
-<li>move cursor to left by one position: <code>h</code></li>
-<li>move cursor to right by one position: <code>l</code></li>
-<li>move cursor to upward direction by one line: <code>k</code></li>
-<li>move cursor to downward direction by one line: <code>j</code></li>
-</ul>
-<p>To perform multi-position navigation use number with these commands: <code>&lt;number&gt;&lt;command&gt;</code></p>
-<ul>
-<li>Move cursor to the beginning of current line: <code>0</code></li>
-<li>Move cursor to the end of current line: <code>$</code></li>
-<li>scroll down entire page: <code>ctrl + f</code></li>
-<li>scroll up entire page: <code>ctrl + b</code></li>
-</ul>
-<p><em>Line navigation</em></p>
-<ul>
-<li>Jump to the nth line: <code>:n</code></li>
-<li>Jump to the start of file: <code>:0</code></li>
-<li>Jump to the end of file: <code>:$</code></li>
-</ul>
-<p><em>Word navigation</em></p>
-<ul>
-<li>move cursor to the beginning of the next word: <code>w</code></li>
-<li>move cursor to the end of the current word: <code>e</code></li>
-<li>move cursor to the beginning of the previous word: <code>b</code></li>
-</ul>
-<h1 id="Revisiting-Editing"><a href="#Revisiting-Editing" class="headerlink" title="Revisiting Editing"></a>Revisiting Editing</h1><p><em>Buffer</em></p>
-<p>Buffer is temporary memory used by Vim. When we open a file in editor, Vim loads its contents from disk drive. These contents are stored in memory (RAM) whenever we edit a file we are actually editing file from buffer. Once we finish editing and save file that time only buffer contents are transferred to appropriate file.</p>
-<p><em>Swap</em></p>
-<p>Swap area is a file created by Vim to store buffer contents periodically. While editing file our changes may be lost because of any reasons and Vim provides swap files to provide data recovery.</p>
-<p>to get actual name of swap file execute command: <code>:swapname</code></p>
-<ul>
-<li>Delete character from cursor position: <code>x</code></li>
-<li>Delete previous character from cursor position: <code>X</code></li>
-<li>Copy single character from cursor position: <code>y</code></li>
-<li>Copy current line: <code>Y</code> or <code>yy</code></li>
-<li>Paste character after cursor position: <code>p</code></li>
-<li>Paste character before cursor position: <code>P</code></li>
-<li>Delete word from cursor postion: <code>dw</code></li>
-<li>Delete entire line from cursor position: <code>D</code></li>
-<li>Delete entire line: <code>dd</code></li>
-<li>undo single or multiple actions: <code>u</code> or <code>&lt;n&gt;u</code></li>
-<li>undo all execute following command: <code>U</code></li>
-<li>redo is apposite action of undo: <code>ctrl+r</code> or <code>OR</code> or <code>:red</code></li>
-</ul>
-<h1 id="Searching"><a href="#Searching" class="headerlink" title="Searching"></a>Searching</h1><p>Search is very common action and it is one of the actions we use most of the time.</p>
-<p><em>Search related settings</em></p>
-<ul>
-<li>highlight search execute command: <code>:set hlsearch</code></li>
-<li>perform incremental search execute command: <code>:set incsearch</code></li>
-</ul>
-<p><em>Search in current file</em></p>
-<p>Search in forward direction</p>
-<ul>
-<li>Search expression in forward direction: <code>/&lt;expression&gt;</code></li>
-<li>Find next occurrence: <code>n</code></li>
-<li>Find previous occurrence: <code>N</code></li>
-<li>Repeat previous forward search: <code>//</code></li>
-</ul>
-<p>Search in backward direction</p>
-<ul>
-<li>Search expression in backward direction: <code>?&lt;expression&gt;</code></li>
-<li>Find next occurrence: <code>n</code></li>
-<li>Find previous occurrence: <code>N</code></li>
-<li>Repeat previous forward search: <code>??</code></li>
-</ul>
-<p>Search word under cursor</p>
-<ul>
-<li>Search next occurrence of current word: <code>*</code></li>
-<li>Search previous occurence of current word: <code>#</code></li>
-</ul>
-<p><em>Search in multiple files</em></p>
-<p>Using vimgrep command we can search expression in multiple files: <code>:vimgrep &lt;expression&gt; &lt;files&gt;</code></p>
-<ul>
-<li>Go to next occurrence of expression: <code>:cn</code></li>
-<li>Go to previous occurrence of expression: <code>:cN</code></li>
-</ul>
-<h1 id="Working-With-Multiple-Things"><a href="#Working-With-Multiple-Things" class="headerlink" title="Working With Multiple Things"></a>Working With Multiple Things</h1><p>Vim is very powerful editor. It supports many advanced features to work with multiple files, buffer and windows.</p>
-<p><em>Multiple files</em></p>
-<ul>
-<li>Load new file in buffer for editing: <code>:e</code> or <code>:edit</code></li>
-<li>List the files for editing from current directory: <code>:e &lt;tab&gt;</code> or <code>:edit &lt;tab&gt;</code></li>
-</ul>
-<p><em>Multiple buffers</em></p>
-<ul>
-<li>Add file into new buffer: <code>:badd &lt;file&gt;</code></li>
-<li>Switch to Nth buffer: <code>:bN</code></li>
-<li>Move to the next buffer in buffer list: <code>:bnext</code></li>
-<li>Move to the previous buffer in buffer list: <code>:bprevious</code></li>
-<li>List all buffers: <code>:buffers</code></li>
-<li>Move to the first buffer: <code>:bfirst</code></li>
-<li>Move to the last buffer: <code>:blast</code></li>
-<li>Load all buffers: <code>:ball</code></li>
-</ul>
-<p><em>Multiple tabs</em></p>
-<ul>
-<li>Open new tab: <code>:tabnew</code></li>
-<li>Open new file in tab: <code>:tabnew &lt;file&gt;</code></li>
-<li>Close current tab: <code>:tabclose</code></li>
-<li>Move to the next tab: <code>:tabnext</code></li>
-<li>Move to the previous tab: <code>:tabprevious</code></li>
-<li>Move to the first tab: <code>:tabfirst</code></li>
-<li>Move to the last tab: <code>:tablast</code></li>
-</ul>
-<p>Multiple windows*</p>
-<ul>
-<li>Open new window: <code>:new &lt;file&gt;</code></li>
-<li>Open file in new window: <code>:new &lt;file&gt;</code></li>
-</ul>
-<h1 id="Markers"><a href="#Markers" class="headerlink" title="Markers"></a>Markers</h1><p>Vim supports bookmark feature. </p>
-<ul>
-<li>create bookmark execute command: <code>m&#123;bookmark-name&#125;</code></li>
-<li>Move to the exact location of bookmark: <code>&#123;back-quote&#125;&#123;bookmark-name&#125;</code></li>
-<li>Jump to the beginning of bookmark line: <code>&#39;&#123;bookmark-name&#125;</code></li>
-<li>List all bookmarks: <code>:marks</code></li>
-<li>Delete bookmark: <code>:delmarks &#123;bookmark-name&#125;</code></li>
-</ul>
-<h1 id="Folding"><a href="#Folding" class="headerlink" title="Folding"></a>Folding</h1><p>Fold functionality will be useful when file contents large text.</p>
-<p>To activate fold use command: <code>:set foldenable</code>, <code>:set foldmethod = indent</code></p>
-<ul>
-<li>close fold: <code>zc</code></li>
-<li>open fold: <code>zo</code></li>
-<li>close all folds: <code>zM</code></li>
-<li>Unfold all: <code>zR</code></li>
-</ul>
-<h1 id="Diff"><a href="#Diff" class="headerlink" title="Diff"></a>Diff</h1><p>Similar to UNIX diff command we can use Vim to show diff in much better manner. It will show diff in colorful manner. </p>
-<ul>
-<li>show difference: <code>vimdiff &lt;file&gt; &lt;file&gt;</code> or <code>vim -d &lt;file&gt; &lt;file&gt;</code></li>
-<li>perform horizontal split: <code>:diffsplit filename</code></li>
-<li>perform vertical split: <code>:diffsplit filename</code></li>
-</ul>
-<p><em>Navigation in diff mode</em></p>
-<ul>
-<li>open scrollbind: <code>:set scrollbind</code></li>
-<li>disable scrollbind: <code>:set noscrollbind</code></li>
-<li>Switch between diff window: <code>ctrl+w ctrl+w</code></li>
-<li>Jump to previous change: <code>[c</code></li>
-<li>Jump to next change: <code>]c</code></li>
-<li>Apply changes in current diff window: <code>:diffget</code></li>
-<li>Apply change from current pane to another: <code>:diffput</code></li>
-</ul>
-<h1 id="Using-Vim-As-Ide"><a href="#Using-Vim-As-Ide" class="headerlink" title="Using Vim As Ide"></a>Using Vim As Ide</h1><p><em>Synatx highlighting</em></p>
-<p>yntax highlighting is one of the important features of IDE.</p>
-<p>To enable syntax highlighting: <code>:syntax on</code></p>
-<p><em>Smart indentation</em></p>
-<p>To perform auto and smart indentation use command: <code>:set autoindent</code> or <code>:set smartindent</code> </p>
-<h1 id="Tips-amp-amp-Tricks"><a href="#Tips-amp-amp-Tricks" class="headerlink" title="Tips &amp;&amp; Tricks"></a>Tips &amp;&amp; Tricks</h1><p>We can instruct Vim to highlight miss-spelled words: <code>:set spell</code></p>
-<p>To change file format to UNIX: <code>:set ff = unix</code></p>
-<p>To change file format to DOS: <code>:set ff = dos</code></p>
-<p>To add line number: <code>:set number</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/02/02/tutorial/vim-tutorial/" data-id="ckknp9eu50002ypjxgkwn2k68" data-title="vim-tutorial" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/02/08/ubantu/how-to-config-environment-variable-in-ubantu/" data-id="ckkwi1g0t0004p5jxag4o22l6" data-title="how-to-config-environment-variable-in-ubantu" class="article-share-link">Share</a>
       
       
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ubantu/" rel="tag">ubantu</a></li></ul>
-
     </footer>
   </div>
   
@@ -374,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" data-id="ckknp9eu10001ypjxfssreyzx" data-title="how-to-install-jdk-in-ubantu" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/26/ubantu/how-to-install-jdk-in-ubantu/" data-id="ckkwi1g0u0005p5jxakqi31c9" data-title="how-to-install-jdk-in-ubantu" class="article-share-link">Share</a>
       
       
       
@@ -424,7 +225,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckknp9eub0004ypjx0lyvce9s" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/24/ubantu/how-to-manipulate-short-cut-in-ubantu/" data-id="ckkwi1g0v0006p5jxe35j3m04" data-title="how-to-manipulate-short-cut-in-ubantu" class="article-share-link">Share</a>
       
       
       
@@ -473,7 +274,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://lanzxn.github.io/2021/01/18/hello-world/" data-id="ckknp9eue0005ypjx6nky5n7d" data-title="Hello World" class="article-share-link">Share</a>
+      <a data-url="http://lanzxn.github.io/2021/01/18/hello-world/" data-id="ckkwi1g0r0002p5jxch1jeqh3" data-title="Hello World" class="article-share-link">Share</a>
       
       
       
@@ -530,7 +331,7 @@
       <ul>
         
           <li>
-            <a href="/2021/02/02/tutorial/vim-tutorial/">vim-tutorial</a>
+            <a href="/2021/02/08/ubantu/how-to-config-environment-variable-in-ubantu/">how-to-config-environment-variable-in-ubantu</a>
           </li>
         
           <li>
